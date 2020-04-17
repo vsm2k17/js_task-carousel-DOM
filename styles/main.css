@@ -52,35 +52,42 @@ h1 {
     background: url(../images/slider-btn/prev-btn.png); }
 
 body {
+  width: 100%;
   font-family: Lato, sans-serif;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 0;
+  margin: 0; }
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 350px 1fr; }
 
 .blinded-left {
-  position: absolute;
+  position: relative;
   top: 0;
   z-index: 1;
   display: block;
   height: 100vh;
-  width: 40%;
+  width: 100%;
   background-color: white; }
 
 .blinded-right {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: relative;
   z-index: 1;
   display: block;
   height: 100vh;
-  width: 40%;
-  background-color: white; }
+  width: 100%;
+  background-color: white;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3; }
 
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: absolute;
-  top: 10px;
-  left: calc(50% - 150px); }
+  position: relative;
+  left: 20px; }
 
 .carousel {
   display: grid;
@@ -88,9 +95,11 @@ body {
   -webkit-column-gap: 40px;
      -moz-column-gap: 40px;
           column-gap: 40px;
-  position: absolute;
-  -webkit-transition: left 0.5s;
-  transition: left 0.5s;
+  position: relative;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
   left: 0; }
 
 .carousel__dots-wrap {
@@ -118,16 +127,16 @@ body {
 
 .carousel__btn {
   position: absolute;
-  z-index: 2;
+  z-index: 20;
   top: 80px; }
   .carousel__btn:hover {
     cursor: pointer; }
 
 .carousel__btn_prev {
-  left: 37vw; }
+  left: -70px; }
 
 .carousel__btn_next {
-  left: 60vw; }
+  left: 335px; }
 
 ul {
   list-style: none;

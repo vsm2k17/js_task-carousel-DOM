@@ -8,24 +8,24 @@ const dots = document.querySelector('.carousel__dots-wrap');
 let position = 0;
 let indexOfActiveDot = 0;
 
+function changePosition(i, step) {
+  carousel.style.transform = `translate(${position - step}px)`;
+  position -= step;
+  dots.children[indexOfActiveDot].classList.remove('carousel__dot_active');
+  dots.children[indexOfActiveDot - i].classList.add('carousel__dot_active');
+  indexOfActiveDot -= i;
+}
+
 btnNext.addEventListener('click', (e) => {
-  if (position === -1050) {
+  if (position <= -1050) {
     return;
   }
-  carousel.style.left = `${position - 350}px`;
-  position -= 350;
-  dots.children[indexOfActiveDot].classList.remove('carousel__dot_active');
-  dots.children[indexOfActiveDot + 1].classList.add('carousel__dot_active');
-  indexOfActiveDot++;
+  changePosition(-1, 350);
 });
 
 btnPrev.addEventListener('click', (e) => {
-  if (position === 0) {
+  if (position >= 0) {
     return;
   }
-  carousel.style.left = `${position + 350}px`;
-  position += 350;
-  dots.children[indexOfActiveDot].classList.remove('carousel__dot_active');
-  dots.children[indexOfActiveDot - 1].classList.add('carousel__dot_active');
-  indexOfActiveDot--;
+  changePosition(1, -350);
 });
